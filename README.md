@@ -13,7 +13,7 @@ Remember to upgrade the firmware you will find the version 2.7 in this repositor
 More info on the official Github : https://github.com/whid-injector/WHID
 
 ## How to use the script
-```python
+```
 python3 WHIDInjector.py -v --host 127.0.0.1 --port 4242 --payload payloads/windows.txt -a -h                                                                          127 ↵
 usage: WHIDInjector.py [-h] [-v] [--host [HOST]] [--port [PORT]]
                        [--user [USER]] [--pass [PASS]] [--panel [PANEL]]
@@ -36,7 +36,7 @@ python3 WHIDInjector.py -v --host 127.0.0.1 --port 4242 --payload payloads/windo
 ```
 
 Send a simple reverse-shell payload
-```python
+```
 $ python3 WHIDInjector.py -v --host 127.0.0.1 --port 4444                                                                                                                 1 ↵
 
      -------------------------------------------------------------
