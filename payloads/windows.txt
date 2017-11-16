@@ -3,3 +3,4 @@ Press:131+114
 CustomDelay:1000
 Print:%s
 CustomDelay:1000
+Press:176
