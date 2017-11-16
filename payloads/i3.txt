@@ -1,0 +1,6 @@
+Rem:Command Execution for i3
+Press:131+176
+CustomDelay:1000
+Print:%s
+CustomDelay:1000
+Press:176

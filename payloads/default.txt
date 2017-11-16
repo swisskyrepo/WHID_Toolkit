@@ -1,0 +1,6 @@
+Rem:Command Execution
+Press:130+195
+CustomDelay:1000
+Print:%s
+CustomDelay:1000
+Press:176
