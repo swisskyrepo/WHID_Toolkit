@@ -1,4 +1,4 @@
-Rem:Command Execution
+Rem:Command Execution (ALT+F2)
 Press:130+195
 CustomDelay:1000
 Print:%s

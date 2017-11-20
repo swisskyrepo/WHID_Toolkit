@@ -1,4 +1,4 @@
-Rem:Command Execution for i3
+Rem:Command Execution for i3 (WINDOWS+ENTER)
 Press:131+176
 CustomDelay:1000
 Print:%s

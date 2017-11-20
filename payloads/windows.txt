@@ -1,4 +1,4 @@
-Rem:Command Execution for Windows
+Rem:Command Execution for Windows (WINDOWS+R)
 Press:131+114
 CustomDelay:1000
 Print:%s

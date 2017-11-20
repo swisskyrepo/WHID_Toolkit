@@ -1,0 +1,6 @@
+Rem:Command Execution for OSX (COMMAND+SPACE)
+Press:131+32
+CustomDelay:1000
+Print:%s
+CustomDelay:1000
+Press:176
