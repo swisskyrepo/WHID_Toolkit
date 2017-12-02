@@ -20,6 +20,13 @@ def banner():
     print("-------------------------------------------------------------------")
 
 def help():
+    print("--------------[ Events ]--------------")
+    print("q/exit     => exit the program")
+    print("h/help     => display this help message")
+    print("reverse    => use a basic reverse-shell based on ncat")
+    print("bind       => set up a bind-shell")
+    print("empire URL => download and execute a powershell string")
+    print("send MSG   => write MSG")
     print("--------------[ Commands ]--------------")
     print("Comment     => Rem: Comment")
     print("Delay       => CustomDelay:1000")

