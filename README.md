@@ -1,7 +1,7 @@
 # WHID Injector Toolkit
 What is it ? It's a simple script to send commands (french keyboard) from your terminal to the WHID Injector. It will automatically convert the "azerty" to "qwerty" format if you're lazy. Furthermore it has builtins payload such as reverse-shell and bind-shell.
 
-![whid-picture](https://github.com/swisskyrepo/WHID_Toolkit/blob/master/screenshots/whid.png?raw=true)
+![whid-picture](https://github.com/swisskyrepo/WHID_Toolkit/blob/master/screenshots/whid.jpg?raw=true)
 
 **Warning** : Newest version of WHID Toolkit expect the WHID to have a firmware in the prefered language, alternatively you can force the french keyboard with the english firmware using the `--force` arguments. For more customization informations go to swisskyrepo.github.io .
 
