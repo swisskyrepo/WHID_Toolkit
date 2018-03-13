@@ -138,12 +138,3 @@ if __name__ == "__main__":
 
                 # Send the payload
                 whid.send_payload(user_converted, results.panel+"/runlivepayload")
-
-
-"""
-export un binary with mapping FR: 2.7.51-ESP_Code.ino.french.bin
-TODO change_ssid_name
-TODO change_ssid_pass
-TODO update_firmware
-TODO provide a french_keyboard_firmware.bin
-"""

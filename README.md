@@ -1,9 +1,9 @@
-# WHID Injector
-**Disclaimer: Little project to interact with the WHID, mostly because I didn't wanted to modify the firmware to support my keyboard, feel free to improve it ;)**
+# WHID Injector Toolkit
+What is it ? It's a simple script to send commands (french keyboard) from your terminal to the WHID Injector. It will automatically convert the "azerty" to "qwerty" format if you're lazy. Furthermore it has builtins payload such as reverse-shell and bind-shell.
 
-What is it ? It's a simple script to send commands (french keyboard) from your terminal to the WHID Injector. It will automatically convert the "azerty" to "qwerty" format. Furthermore it has builtins payload such as reverse-shell and bind-shell.
+![whid-picture](https://github.com/swisskyrepo/WHID_Toolkit/blob/master/screenshots/whid.png?raw=true)
 
-**Warning** : Newest version of WHID Toolkit expect the WHID to have a firmware in the prefered language, alternatively you can force the french keyboard with the english firmware using the `--force` arguments.
+**Warning** : Newest version of WHID Toolkit expect the WHID to have a firmware in the prefered language, alternatively you can force the french keyboard with the english firmware using the `--force` arguments. For more customization informations go to swisskyrepo.github.io .
 
 Where to buy a WHID Injector ? I got mine from [Aliexpress](https://www.aliexpress.com/item/Cactus-Micro-compatible-board-plus-WIFI-chip-esp8266-for-atmega32u4/32318391529.html)
 
